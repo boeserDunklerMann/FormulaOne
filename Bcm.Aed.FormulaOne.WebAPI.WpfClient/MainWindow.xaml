@@ -1,0 +1,58 @@
+﻿<RibbonWindow x:Class="Bcm.Aed.FormulaOne.WebAPI.WpfClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bcm.Aed.FormulaOne.WebAPI.WpfClient"
+	    xmlns:vm="clr-namespace:Bcm.Aed.FormulaOne.MVVM;assembly=BCM.AedFormulaOne.MVVM"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Icon="../img/F1.svg.png">
+	<RibbonWindow.DataContext>
+		<vm:MainVM/>
+	</RibbonWindow.DataContext>
+	<DockPanel LastChildFill="True">
+		<Ribbon DockPanel.Dock="Top" Title="Menüband" x:Name="rbnMain" SelectionChanged="rbnMain_SelectionChanged">
+			<Ribbon.ApplicationMenu>
+				<RibbonApplicationMenu KeyTip="M">
+					<RibbonApplicationMenuItem ImageSource="..\img\save-file-icon-7.png" Header="Speichern" KeyTip="S" Command="{Binding SaveChanges}"/>
+				</RibbonApplicationMenu>
+			</Ribbon.ApplicationMenu>
+			<Ribbon.QuickAccessToolBar>
+				<RibbonQuickAccessToolBar>
+					<RibbonButton SmallImageSource="..\img\save-file-icon-7.png" KeyTip="S" Command="{Binding SaveChanges}"/>
+				</RibbonQuickAccessToolBar>
+			</Ribbon.QuickAccessToolBar>
+			<RibbonTab Header="Start">
+				<RibbonGroup Header="Einstellungen">
+					<StackPanel Orientation="Vertical" Margin="5">
+						<StackPanel Orientation="Horizontal">
+							<Label>WebAPI Url:</Label>
+							<TextBox>
+								<TextBox.Text>
+									<Binding Path="ApiUrl">
+										<Binding.ValidationRules>
+											<ExceptionValidationRule/>
+											<local:UriValidationRule ErrorMessage="keine gültige absolute URL"/>
+										</Binding.ValidationRules>
+									</Binding>
+								</TextBox.Text>
+								<TextBox.Width>100</TextBox.Width>
+							</TextBox>
+						</StackPanel>
+						<Button Command="{Binding ApplyApiChange}">Apply</Button>
+					</StackPanel>
+				</RibbonGroup>
+				<RibbonGroup>
+					<Image Source="/img/F1.svg.png" Grid.Row="0" Grid.ColumnSpan="2" Width="120" Height="30" HorizontalAlignment="Center"/>
+				</RibbonGroup>
+			</RibbonTab>
+			<RibbonTab Header="Teams" />
+			<RibbonTab Header="Fahrer" />
+			<RibbonTab Header="Strecken" />
+			<RibbonTab Header="Ergebnisse" />
+		</Ribbon>
+		<Grid DockPanel.Dock="Top" x:Name="grdMain" >
+		</Grid>
+		
+	</DockPanel>
+</RibbonWindow>

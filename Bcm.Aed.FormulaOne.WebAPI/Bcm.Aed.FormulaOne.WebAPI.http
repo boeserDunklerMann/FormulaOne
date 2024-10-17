@@ -1,0 +1,6 @@
+@Bcm.Aed.FormulaOne.WebAPI_HostAddress = http://localhost:5122
+
+GET {{Bcm.Aed.FormulaOne.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

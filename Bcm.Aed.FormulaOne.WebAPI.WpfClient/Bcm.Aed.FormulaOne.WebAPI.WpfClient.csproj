@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="img\F1.svg.png" />
+    <None Remove="img\F1_Logo.svg" />
+    <None Remove="img\folder.ico" />
+    <None Remove="img\opened_folder.ico" />
+    <None Remove="img\save-file-icon-7.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BCM.AedFormulaOne.MVVM\BCM.AedFormulaOne.MVVM.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\F1.svg.png" />
+    <Resource Include="img\F1_Logo.svg" />
+    <Resource Include="img\folder.ico" />
+    <Resource Include="img\opened_folder.ico" />
+    <Resource Include="img\save-file-icon-7.png" />
+  </ItemGroup>
+
+</Project>

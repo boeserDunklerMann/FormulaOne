@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Bcm.Aed.FormulaOne.WebAPI.WpfClient.Controls.DriverControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:Bcm.Aed.FormulaOne.MVVM;assembly=BCM.AedFormulaOne.MVVM">
+	<UserControl.DataContext>
+		<vm:MainVM/>
+	</UserControl.DataContext>
+    <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+
+		<Label Grid.Row="0">Fahrer:</Label>
+		<DataGrid Width="auto" Background="LightGoldenrodYellow" Grid.Row="1"
+				  ItemsSource="{Binding Drivers}" AutoGenerateColumns="False"
+				  >
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Name" Binding="{Binding DriverName}"/>
+				<DataGridTemplateColumn Header="Herkunft">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<Image Source="{Binding DriverCountry.CountryFlag}" Width="30" Height="30"/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+				<DataGridTextColumn Header="Geb.-Datum" Binding="{Binding DateOfBirth}"/>
+				<DataGridTextColumn Header="Team" Binding="{Binding DriverTeam.TeamName}"/>
+			</DataGrid.Columns>
+		</DataGrid>
+	</Grid>
+</UserControl>
